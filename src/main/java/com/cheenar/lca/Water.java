@@ -2,6 +2,8 @@ package com.cheenar.lca;
 
 import com.cheenar.lca.api.Livecoding;
 import com.cheenar.lca.api.RequestType;
+import com.cheenar.lca.api.codecategories.Categories;
+import com.cheenar.lca.api.codecategories.Category;
 import com.cheenar.lca.api.user.User;
 import com.cheenar.lca.login.LoginHack;
 import com.mashape.unirest.http.Headers;
@@ -31,9 +33,10 @@ public class Water
 
         Livecoding api = new Livecoding(cookie);
         HashMap<String, String> arg = new HashMap<String, String>();
-        arg.put("user", "phpcoder");
-        User user = (User) api.request(RequestType.USER, arg);
-        System.out.println(user.getYearsProgramming());
+        arg.put("name", "Java");
+        arg.put("limit", "9999");
+        Categories user = (Categories) api.request(RequestType.CODING_CATEGORIES, arg);
+        System.out.println(user.getCategories().size());
     }
 
 }
