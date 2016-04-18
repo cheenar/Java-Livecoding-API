@@ -32,7 +32,7 @@ public class Water
 
         Livecoding api = new Livecoding(cookie);
         HashMap<String, String> arg = new HashMap<String, String>();
-        List<Video> user = (List<Video>) api.request(RequestType.VIDEO_LATEST, arg);
+        List<Video> user = (List<Video>) api.request(RequestType.USERS_VIDEOS_LATEST, arg);
         System.out.println(user.size());*/
     }
 

@@ -4,6 +4,8 @@ import com.cheenar.lca.api.codecategories.Categories;
 import com.cheenar.lca.api.codecategories.Category;
 import com.cheenar.lca.api.langauges.Language;
 import com.cheenar.lca.api.langauges.Languages;
+import com.cheenar.lca.api.livestreams.Livestream;
+import com.cheenar.lca.api.livestreams.Livestreams;
 import com.cheenar.lca.api.user.User;
 import com.cheenar.lca.api.user.Video;
 import com.cheenar.lca.api.user.Videos;
@@ -74,7 +76,7 @@ public class Livecoding
                 baseURL = baseURL + "users/" + args.get("user") + "/?format=json";
                 break;
 
-            case VIDEOS:
+            case USER_VIDEOS:
                 baseURL += "user/videos/?";
                 for(String key : args.keySet())
                 {
@@ -84,8 +86,34 @@ public class Livecoding
 
                 break;
 
-            case VIDEO_LATEST:
+            case USERS_VIDEOS_LATEST:
                 baseURL += "user/videos/latest";
+                break;
+
+            case LIVESTREAM_SLUG:
+                baseURL += "livestreams/" + args.get("user__slug");
+                break;
+
+            case LIVESTREAMS:
+                baseURL += "livestreams/?";
+                for(String key : args.keySet())
+                {
+                    System.out.println(key);
+                    baseURL += addQuery(args, key);
+                }
+                break;
+
+            case VIDEOS:
+                baseURL += "videos/?";
+                for(String key : args.keySet())
+                {
+                    System.out.println(key);
+                    baseURL += addQuery(args, key);
+                }
+                break;
+
+            case VIDEOS_SLUG:
+                baseURL += "videos/" + args.get("slug") + "/";
                 break;
 
             default:
@@ -108,10 +136,10 @@ public class Livecoding
             case USERS_SLUG:
                 return (User) gson.fromJson(json, User.class);
 
-            case VIDEOS:
+            case USER_VIDEOS:
                 return (Videos) gson.fromJson(json, Videos.class);
 
-            case VIDEO_LATEST:
+            case USERS_VIDEOS_LATEST:
                 return (List<Video>) gson.fromJson(json, List.class);
 
             case LANGUAGES_SLUG:
@@ -119,6 +147,18 @@ public class Livecoding
 
             case LANGUAGES:
                 return (Languages) gson.fromJson(json, Languages.class);
+
+            case LIVESTREAM_SLUG:
+                return (Livestream) gson.fromJson(json, Livestream.class);
+
+            case LIVESTREAMS:
+                return (Livestreams) gson.fromJson(json, Livestreams.class);
+
+            case VIDEOS:
+                return (Videos) gson.fromJson(json, Videos.class);
+
+            case VIDEOS_SLUG:
+                return (Video) gson.fromJson(json, Video.class);
 
             default:
                 return null;

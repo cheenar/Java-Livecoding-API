@@ -1,4 +1,4 @@
-package com.cheenar.lca.api.user;
+package com.cheenar.lca.api.livestreams;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -7,26 +7,24 @@ import java.util.List;
 /**
  * Created by cheen on 4/17/2016.
  */
-public class Video
+public class Livestream
 {
 
     private String url;
-    private String slug;
     private String user;
+    @SerializedName("user__slug")
+    private String slug;
     private String title;
     private String description;
     @SerializedName("coding_category")
     private String codingCategory;
     private String difficulty;
     private String language;
-    @SerializedName("product_type")
-    private String productType;
-    @SerializedName("creation_time")
-    private String creationTime;
-    private int duration;
-    private String region;
-    @SerializedName("viewers_overall")
-    private int overallViewers;
+    private String tags;
+    @SerializedName("is_live")
+    private boolean isLive;
+    @SerializedName("viewers_live")
+    private int liveViewerCount;
     @SerializedName("viewing_urls")
     private List<String> viewingURLs;
 
@@ -34,12 +32,12 @@ public class Video
         return url;
     }
 
-    public String getSlug() {
-        return slug;
-    }
-
     public String getUser() {
         return user;
+    }
+
+    public String getSlug() {
+        return slug;
     }
 
     public String getTitle() {
@@ -62,24 +60,16 @@ public class Video
         return language;
     }
 
-    public String getProductType() {
-        return productType;
+    public String getTags() {
+        return tags;
     }
 
-    public String getCreationTime() {
-        return creationTime;
+    public boolean isLive() {
+        return isLive;
     }
 
-    public int getDuration() {
-        return duration;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public int getOverallViewers() {
-        return overallViewers;
+    public int getLiveViewerCount() {
+        return liveViewerCount;
     }
 
     public List<String> getViewingURLs() {

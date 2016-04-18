@@ -13,11 +13,17 @@ public enum RequestType
     LANGUAGES,
     LANGUAGES_SLUG,
 
+    LIVESTREAMS,
+    LIVESTREAM_SLUG,
+
     //api/user
     USER,
     //api/users
     USERS_SLUG,
+    USER_VIDEOS,
+    USERS_VIDEOS_LATEST,
+
     VIDEOS,
-    VIDEO_LATEST;
+    VIDEOS_SLUG;
 
 }

@@ -40,6 +40,18 @@ public class RunTests
 
         print("TestLanguage");
         //TestLanguage.main(args);
+
+        print("TestLivestreams");
+        //TestLivestreams.main(args);
+
+        print("TestLivestream");
+        //TestLivestream.main(args);
+
+        print("TestVideo");
+        //TestVideo.main(args);
+
+        print("TestVideosList");
+        TestVideosList.main(args);
     }
 
 }

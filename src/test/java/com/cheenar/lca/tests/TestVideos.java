@@ -1,7 +1,6 @@
 package com.cheenar.lca.tests;
 
 import com.cheenar.lca.api.*;
-import com.cheenar.lca.api.codecategories.Categories;
 import com.cheenar.lca.api.user.Videos;
 import com.cheenar.lca.login.LoginHack;
 
@@ -37,7 +36,7 @@ public class TestVideos
             Orderings.applyOrdering(arg, Orderings.Ordering.SLUG, "phpcoder");
 
 
-            Videos videos = (Videos) api.request(RequestType.VIDEOS, arg);
+            Videos videos = (Videos) api.request(RequestType.USER_VIDEOS, arg);
             System.out.println(videos.getVideos().size());
         }
         catch(Exception e)
