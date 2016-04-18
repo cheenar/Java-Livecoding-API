@@ -2,12 +2,13 @@ package com.cheenar.lca.api;
 
 import com.cheenar.lca.api.codecategories.Categories;
 import com.cheenar.lca.api.codecategories.Category;
+import com.cheenar.lca.api.langauges.Language;
+import com.cheenar.lca.api.langauges.Languages;
 import com.cheenar.lca.api.user.User;
 import com.cheenar.lca.api.user.Video;
 import com.cheenar.lca.api.user.Videos;
 import com.google.gson.Gson;
 import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.request.HttpRequest;
 
 import java.util.HashMap;
 import java.util.List;
@@ -50,6 +51,19 @@ public class Livecoding
                 baseURL += "codingcategories/" + args.get("name");
                 break;
 
+            case LANGUAGES:
+                baseURL += "languages/?";
+                for(String key : args.keySet())
+                {
+                    baseURL += addQuery(args, key);
+                }
+                break;
+
+            case LANGUAGES_SLUG:
+                baseURL += "languages/";
+                baseURL += args.get("name") + "/?format=json";
+                break;
+
             case USER:
                 baseURL = baseURL + "user/";
                 break;
@@ -78,7 +92,7 @@ public class Livecoding
                 break;
         }
 
-        String json = Unirest.get(baseURL).asString().getBody();
+        String json = Unirest.get(baseURL).header("accept", "application/json").asString().getBody();
 
         switch(type)
         {
@@ -99,6 +113,12 @@ public class Livecoding
 
             case VIDEO_LATEST:
                 return (List<Video>) gson.fromJson(json, List.class);
+
+            case LANGUAGES_SLUG:
+                return (Language) gson.fromJson(json, Language.class);
+
+            case LANGUAGES:
+                return (Languages) gson.fromJson(json, Languages.class);
 
             default:
                 return null;

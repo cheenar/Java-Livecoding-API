@@ -9,6 +9,10 @@ public enum RequestType
     //coding cat
     CODING_CATEGORIES,
     CODING_CATEGORIES_NAME,
+
+    LANGUAGES,
+    LANGUAGES_SLUG,
+
     //api/user
     USER,
     //api/users

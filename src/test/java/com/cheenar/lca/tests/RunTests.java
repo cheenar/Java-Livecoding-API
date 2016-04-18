@@ -33,7 +33,13 @@ public class RunTests
 
         print("TestVideos");
         //this test case also has filter usage
-        TestVideos.main(args);
+        //TestVideos.main(args);
+
+        print("TestLanguages");
+        //TestLanguages.main(args);
+
+        print("TestLanguage");
+        //TestLanguage.main(args);
     }
 
 }
