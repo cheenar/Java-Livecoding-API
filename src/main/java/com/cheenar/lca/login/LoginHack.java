@@ -51,19 +51,21 @@ public class LoginHack
 
         //Do the actual login
         HttpResponse<String> postReq = Unirest.post("https://www.livecoding.tv/accounts/login/").header("referer", "https://www.livecoding.tv/accounts/login/").header("cookie", cookie.toString()).field("csrfmiddlewaretoken", token).field("login", user).field("password", pass).asString();
-        System.out.println(postReq.getHeaders().get("Set-Cookie"));
+        if(postReq.getBody().contains("The login and/or password you specified are not correct.")) //this is the string that appears in the body when the login failed, dirty hack
+            throw new Exception("[Livecoding] Login failed! Invalid user or pass");
+        //System.out.println(postReq.getHeaders().get("Set-Cookie"));
 
         //Rebuild that cookie string with the new cookies
         cookies = null;
         cookies = (ArrayList) postReq.getHeaders().get("Set-Cookie");
         for(String c : cookies)
         {
-            System.out.println(c);
+            //System.out.println(c);
             cookie.append(c.split(";")[0]).append(";");
         }
 
         //authentication data
-        System.out.println(cookie.toString());
+        //System.out.println(cookie.toString());
         return cookie.toString();
     }
 
