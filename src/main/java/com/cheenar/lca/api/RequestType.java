@@ -12,6 +12,8 @@ public enum RequestType
     //api/user
     USER,
     //api/users
-    USERS_SLUG;
+    USERS_SLUG,
+    VIDEOS,
+    VIDEO_LATEST;
 
 }

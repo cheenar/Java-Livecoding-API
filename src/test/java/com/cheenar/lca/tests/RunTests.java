@@ -27,6 +27,13 @@ public class RunTests
 
         print("TestCategory");
         //TestCategory.main(args);
+
+        print("TestVideoLatest");
+        //TestVideoLatest.main(args);
+
+        print("TestVideos");
+        //this test case also has filter usage
+        TestVideos.main(args);
     }
 
 }
